@@ -8,7 +8,7 @@ using SearchRankCheck.Models;
 namespace SearchRackCheck.SearchEngine
 {
     /// <summary>
-    /// Summary description for Class1
+    /// Class for performing a google search
     /// </summary>
     public class GoogleSearch
     {
@@ -35,10 +35,13 @@ namespace SearchRackCheck.SearchEngine
             return redirectPrefix.Replace("url?q=", "").Split("&", 2)[0];
         }
         /// <summary>
-        /// Get rank position
+        /// google keyword and return a RankResult
         /// </summary>
         /// <param name="keyword">keyword to google for</param>
-        /// <returns>list of rank positions</returns>
+        /// <returns>
+        ///  RankResult object containing list of urls, sites
+        /// etc, See RankResult for more detail
+        /// </returns>
         public RankResult search(string keyword)
         {
             string rawHtml = null;
