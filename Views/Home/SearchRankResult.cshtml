@@ -1,0 +1,23 @@
+@{ 
+    ViewData["Title"] = "SEO result";
+}
+@model SearchRankCheck.Models.RankResult
+
+<h1>Summary</h1>
+<p>
+    site 
+    <b> @Model.TargetSite </b>
+    appeared on Google at 
+    <b> @String.Join(",", Model.TargetSiteRank.Select(i=>i+1))</b>
+    when searching
+    <b>@Model.Keyword</b>
+</p>
+
+<p>bookmark this page for easy access</p>
+
+<h2>Detailed Results</h2>
+<ol>
+    @foreach (Entry e in Model.AllResults){
+        <li @if(e.IsTargetSite){<text>class="highlight"</text>}><a href=@e.Url> @e.Site </a></li>
+    }
+</ol>
